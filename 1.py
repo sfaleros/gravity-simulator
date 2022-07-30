@@ -74,14 +74,6 @@ class Point :
         self.centery += self.vy/LforPixel
 
     
-def onScale(val):
-    global roundK
-    roundK = int(float(val))
-
-def inhibitor(val):
-    global inhibK
-    inhibK = int(float(val))    
-
 
 def stoper():
     global isRun
@@ -184,10 +176,18 @@ def GraviSimulator():
     global points
     global lb
 
-    StartBtn1.destroy()
-    StartBtn2.destroy()
+    #StartBtn1.destroy()
+    #StartBtn2.destroy()
 
 
+
+    def onScale(val):
+        global roundK
+        roundK = int(float(val))
+
+    def inhibitor(val):
+        global inhibK
+        inhibK = int(float(val))    
 
 
 
@@ -200,10 +200,10 @@ def GraviSimulator():
     btn1.place(x=windowWidth/2.1,y=windowHeight-50)
 
     scale = Scale(window, from_=0, to=16, command=onScale, orient=HORIZONTAL)
-    scale.place(x=windowWidth/1.8,y=windowHeight-50)
+    scale.place(x=windowWidth/1.8,y=windowHeight-70)
 
     scaleInhibitor = Scale(window, from_=50, to=0, command=inhibitor, orient=HORIZONTAL)
-    scaleInhibitor.place(x=windowWidth/1.5,y=windowHeight-50)
+    scaleInhibitor.place(x=windowWidth/1.5,y=windowHeight-70)
 
     lb= Label(window,width=9, height=1, text="000")
     lb.place(x=0,y=0)
@@ -250,7 +250,7 @@ def GraviSimulator():
     
 
 
-
+'''
 
 def chemSimulator():
     StartBtn1.destroy()
@@ -274,7 +274,7 @@ def chemSimulator():
         atoms.append(atomrand)
 
     for i in range(15):
-        пуxrand=random.randint(40,windowWidth-30)
+        xrand=random.randint(40,windowWidth-30)
         yrand=random.randint(40,windowHeight-30)
         pp= canvas.create_oval([xrand, yrand],[xrand+3,yrand+3],fill="blue")
         atomrand=Atom("oxigen",16, random.randint(0,360),random.randint(0,9000)/100,pp)
@@ -288,7 +288,7 @@ StartBtn1.place(x=1400,y=850)
 StartBtn2 = Button(window,height=10,width=19,bg="blue",text="chemical simulator",command=chemSimulator)
 StartBtn2.place(x=1550,y=850)
 
+'''
 
-
-
+GraviSimulator()
 window.mainloop()
